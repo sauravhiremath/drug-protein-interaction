@@ -8,12 +8,35 @@
     "start": "next start"
   },
   "dependencies": {
+    "@geist-ui/react": "^2.1.5",
     "next": "10.2.3",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-tracking": "^8.1.0"
   },
   "devDependencies": {
+    "@svgr/webpack": "^5.5.0",
     "@types/react": "17.0.8",
-    "typescript": "4.3.2"
+    "@types/react-tracking": "^8.1.0",
+    "file-loader": "^6.2.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.0",
+    "typescript": "^4.3.2"
+  },
+  "lint-staged": {
+    "*.{js|jsx|tsx|ts|gql|css|md|json}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js|jsx|tsx|ts}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
