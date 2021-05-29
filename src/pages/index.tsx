@@ -3,13 +3,18 @@ import track from 'react-tracking';
 import { NextPageContext } from 'next';
 
 import { Layout } from '../components/Layout';
+import { Landing } from '../components/Landing';
 
 type Props = {
   result: string | null;
 };
 
 const IndexPage: FunctionComponent<Props> = ({ result }) => {
-  return <Layout>This is my content</Layout>;
+  return (
+    <Layout>
+      <Landing />
+    </Layout>
+  );
 };
 
 export async function getServerSideProps(context: NextPageContext): Promise<{ props: Props }> {

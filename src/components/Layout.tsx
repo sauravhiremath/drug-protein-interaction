@@ -1,8 +1,8 @@
 import React, { ReactNode, FunctionComponent } from 'react';
-import { Link, Page } from '@geist-ui/react';
+import { Page, Text, Link, Grid, Spacer } from '@geist-ui/react';
+import { default as NextLink } from 'next/link';
 
 import { Header } from './Header';
-import LogoWhite from '../../public/static/vercel.svg';
 
 type Props = {
   children?: ReactNode;
@@ -10,19 +10,41 @@ type Props = {
 
 export const Layout: FunctionComponent<Props> = ({ children }) => {
   return (
-    <Page dotBackdrop>
-      <Header />
-      <Page.Content>{children}</Page.Content>
+    <Page render="effect-seo" dotBackdrop>
+      <Page.Content>
+        <Header />
+        {children}
+      </Page.Content>
       <Page.Footer>
-        <Link href="/">
-          <LogoWhite className="w-64" />
-        </Link>
-        <Link target="_blank" rel="noreferrer" icon color>
-          Terms
-        </Link>
-        <Link target="_blank" rel="noreferrer" icon color>
-          Privacy Policy
-        </Link>
+        <Grid.Container justify="center" alignItems="center">
+          <Grid xs={8}>
+            <Grid.Container justify="center">
+              <NextLink href="/">
+                <Link color>
+                  <Text>Drug Protein Interactions</Text>
+                </Link>
+              </NextLink>
+            </Grid.Container>
+          </Grid>
+          <Grid xs={8}>
+            <Grid.Container justify="center">
+              <NextLink href="/">
+                <Link icon color>
+                  Terms
+                </Link>
+              </NextLink>
+            </Grid.Container>
+          </Grid>
+          <Grid xs={8}>
+            <Grid.Container justify="center">
+              <NextLink href="/">
+                <Link icon color>
+                  Privacy Policy
+                </Link>
+              </NextLink>
+            </Grid.Container>
+          </Grid>
+        </Grid.Container>
       </Page.Footer>
     </Page>
   );
