@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { default as NextLink } from 'next/link';
-import { Breadcrumbs, Page, Spacer, Text } from '@geist-ui/react';
+import { Breadcrumbs, Spacer, Text } from '@geist-ui/react';
 
 export const Header: FunctionComponent = () => {
   return (
