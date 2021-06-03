@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import consola from 'consola';
 
-import { conn } from '../../config';
+import { conn, __getDirectory } from '../../config';
 
 type Data = {
   success: boolean;
@@ -13,9 +13,7 @@ type Data = {
 export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   await conn.connect();
 
-  const __pagesDirectory = path.resolve(process.cwd(), 'src', 'sql');
-  consola.info(__pagesDirectory);
-  const populate = fs.readFileSync(path.join(__pagesDirectory, 'pdid.sql')).toString();
+  const populate = fs.readFileSync(path.join(__getDirectory('src', 'sql'), 'pdid.sql')).toString();
   const results = await conn.query(populate);
   consola.info(results);
 
