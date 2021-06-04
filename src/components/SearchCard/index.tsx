@@ -6,21 +6,31 @@ type Props = {
   placeholder: string;
   label?: string;
   large?: boolean;
+  onSubmit: React.FormEventHandler<any> | undefined;
+  onChange: ((e: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
   children?: ReactNode;
 };
 
-export const SearchCard: FunctionComponent<Props> = ({ title, label, placeholder, large, children }) => {
+export const SearchCard: FunctionComponent<Props> = ({
+  title,
+  label,
+  placeholder,
+  large,
+  onSubmit,
+  onChange,
+  children,
+}) => {
   return (
     <Card shadow type="lite">
       <h4>{title}</h4>
       {label && (
-        <Input label={label} placeholder={placeholder}>
+        <Input label={label} placeholder={placeholder} onChange={onChange}>
           {children}
         </Input>
       )}
       {large && <Textarea width="100%" placeholder={placeholder}></Textarea>}
       <Spacer x={1} />
-      <Button shadow type="secondary" auto>
+      <Button shadow type="secondary" auto onClick={onSubmit}>
         Search
       </Button>
       <Card.Footer>

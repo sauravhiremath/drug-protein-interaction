@@ -10,7 +10,7 @@ type Props = {
 
 export const Layout: FunctionComponent<Props> = ({ children }) => {
   return (
-    <Page render="effect-seo" dotBackdrop>
+    <Page render="effect-seo" dotBackdrop size="large">
       <Page.Content>
         <Header />
         {children}
